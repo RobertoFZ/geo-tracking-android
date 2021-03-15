@@ -1,0 +1,44 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <fragment
+            xmlns:map="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="com.twosoft.follow.MapActivity.MapActivity" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/buttonLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|left"
+            android:layout_margin="16dp"
+            android:src="@drawable/logout"
+            app:elevation="4dp"
+            app:layout_anchorGravity="bottom|right|end" />
+
+        <Switch
+            android:id="@+id/switchActive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|left"
+            android:layout_margin="16dp"
+            android:textSize="18dp"
+            app:elevation="4dp"
+            app:layout_anchorGravity="top|left|end"
+            android:text="Activo" />
+    </FrameLayout>
+
+</LinearLayout>

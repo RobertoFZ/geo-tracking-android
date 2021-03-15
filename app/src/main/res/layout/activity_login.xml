@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/colorPrimaryDark"
+    >
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="56dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp">
+
+
+
+        <!-- Email Label -->
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/title_activity_login"
+            android:textAlignment="center"
+            android:textColor="#fff"
+            android:textSize="40dp"
+            />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_light"
+            android:text="@string/help_activity_login"
+            android:textAlignment="center"
+            android:textColor="#fff"
+            android:textSize="18dp"
+            android:layout_marginBottom="30dp"/>
+
+        <android.support.design.widget.TextInputLayout
+            android:theme="@style/EditTextHint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+
+            <EditText
+                android:id="@+id/editTextEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Correo electrónico"
+                android:textColor="@android:color/white"
+                android:inputType="textEmailAddress" />
+        </android.support.design.widget.TextInputLayout>
+
+        <!-- Password Label -->
+        <android.support.design.widget.TextInputLayout
+            android:theme="@style/EditTextHint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+            <EditText  android:id="@+id/editTextPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:textColor="@android:color/white"
+                android:hint="Contraseña"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:visibility="gone"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="30dp"/>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/buttonLogin"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:padding="12dp"
+            android:text="Iniciar sesión"/>
+
+        <TextView
+            android:id="@+id/link_signup"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:fontFamily="@font/poppins_light"
+            android:gravity="center"
+            android:text="@string/not_account_text"
+            android:textColor="#fff"
+            android:textSize="15dip" />
+
+    </LinearLayout>
+</ScrollView>
