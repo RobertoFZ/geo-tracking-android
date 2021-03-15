@@ -7,7 +7,8 @@ import org.jetbrains.annotations.NotNull
  */
 class ApiConstants {
     companion object {
-        const val API_ENDPOINT = "http://192.168.0.11:8000/api/v1/"
+        //const val API_ENDPOINT = "http://192.168.0.11:8000/api/v1/"
+        const val API_ENDPOINT = "http://138.68.29.90:8000/api/v1/"
 
         // KEYS
         const val PK = "pk"

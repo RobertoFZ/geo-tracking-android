@@ -71,6 +71,7 @@ class SendDataService : BroadcastReceiver(), GoogleApiClient.ConnectionCallbacks
     fun sendLocationToServer() {
         val token = preferencesHelper?.token
         val user_id = preferencesHelper?.pk
+        val active = preferencesHelper?.on_route
 
         if (ActivityCompat.checkSelfPermission(this.context!!, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this.context!!, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this.context!!, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
@@ -78,7 +79,7 @@ class SendDataService : BroadcastReceiver(), GoogleApiClient.ConnectionCallbacks
         }
         mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
                 mGoogleApiClient)
-        if (mLastLocation != null) {
+        if (mLastLocation != null && active == true) {
             Log.d("LOCATION_SERVICE COORS", mLastLocation?.latitude.toString() + ", " + mLastLocation?.longitude.toString())
             val userService = RetrofitFactory.createUsersService()
             // System.currentTimeMillis()

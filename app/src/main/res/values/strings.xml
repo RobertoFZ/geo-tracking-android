@@ -1,13 +1,13 @@
 <resources>
-    <string name="app_name">Follow App</string>
+    <string name="app_name">Bici Taxi App</string>
     <string name="title_activity_map">Mapa</string>
     <string name="title_activity_login">¡Hola!</string>
     <string name="title_activity_signup">¡Ya casi!</string>
     <string name="help_activity_login">Hora de Iniciar Sesión</string>
     <string name="help_activity_signup">Necesitamos tu Información</string>
     <string name="develop_by">Desarrollado por</string>
-    <string name="author">Roberto Franco</string>
-    <string name="experience">Junior Android Developer</string>
+    <string name="author">Shapp Inc.</string>
+    <string name="experience">Android Development</string>
     <string name="not_account_text">¿Aún no una tienes cuenta? Crea una</string>
     <string name="have_account">¿Ya tienes cuenta? Inicia sesión</string>
 </resources>

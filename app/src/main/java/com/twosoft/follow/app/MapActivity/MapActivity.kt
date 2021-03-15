@@ -80,7 +80,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, MapContract.View {
         } else {
             switchActive.text = "Inactivo"
         }
-
+        PreferencesHelper(this).on_route = status
     }
 
     override fun centerMap(latitude: Double, longitude: Double) {
