@@ -31,7 +31,8 @@ import java.util.*
 
 class MapActivity : AppCompatActivity(), OnMapReadyCallback, MapContract.View {
     private val DEFAULT_ZOOM: Float = 12f
-    private val MAP_UPDATE_TIME: Long = 60000 // 1 minute
+    private val MAP_UPDATE_TIME: Long = 30000 // miliseconds
+    private val SEND_DATA_TIME: Long = 60 // seconds
     private val SEND_DATA_SERVICE_ID = 0
     private var sendDataServiceIntent: Intent? = null
     private var sendDataServicePIntent: PendingIntent? = null
@@ -169,9 +170,9 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, MapContract.View {
     private fun startLocationService() {
         Log.d("MAP_ACTIVITY", "start alarm system")
         sendDataServiceIntent = Intent(this, SendDataService::class.java)
-        sendDataServicePIntent = PendingIntent.getBroadcast(this, SEND_DATA_SERVICE_ID, sendDataServiceIntent, 0)
+        sendDataServicePIntent = PendingIntent.getBroadcast(this, SEND_DATA_SERVICE_ID, sendDataServiceIntent, PendingIntent.FLAG_UPDATE_CURRENT)
         alarm = getSystemService(Context.ALARM_SERVICE) as AlarmManager?
-        alarm?.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), (60 * 1000).toLong(), sendDataServicePIntent)
+        alarm?.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), SEND_DATA_TIME * 1000, sendDataServicePIntent)
     }
 
     private fun createMarker(appMarker: LocationResponse) {
