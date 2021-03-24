@@ -1,8 +1,10 @@
 package com.twosoft.follow.MapActivity
 
 import android.app.AlarmManager
+import android.app.AlertDialog
 import android.app.PendingIntent
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.support.v7.app.AppCompatActivity
@@ -94,7 +96,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, MapContract.View {
     }
 
     override fun showToast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 
     override fun showLoader() {
@@ -136,6 +138,18 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, MapContract.View {
     }
 
     override fun logout() {
+        val builder = AlertDialog.Builder(this)
+
+        with(builder)
+        {
+            setTitle("¿Quieres cerrar sesión?")
+            setPositiveButton("Sí", DialogInterface.OnClickListener { dialogInterface, i -> doLogout()  })
+            setNegativeButton("Cancelar", null)
+            show()
+        }
+    }
+
+    private fun doLogout() {
         PreferencesHelper(this).clearPreferences()
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)

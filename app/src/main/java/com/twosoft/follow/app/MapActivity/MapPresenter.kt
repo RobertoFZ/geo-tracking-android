@@ -103,7 +103,15 @@ class MapPresenter(
 
             try {
                 val errorResponse = errorConverter.convert(body)
-                mapView?.showToast(errorResponse.message)
+                Log.d("MAP_PRESENTER_ERROR", errorResponse.toString())
+                if (error.code() == 401) {
+                    mapView?.showToast("Tu sesión expiró, inicia sesión de nuevo")
+                    mapView?.logout()
+                    return
+                }
+                if( errorResponse.message != null) {
+                    mapView?.showToast(errorResponse.message)
+                }
             } catch (e1: IOException) {
                 e1.printStackTrace()
             }
