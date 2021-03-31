@@ -24,18 +24,26 @@ class SignupPresenter(
 )
     : SignupContract.UserActionListener {
 
-    override fun doSignup(first_name: String, last_name: String, email: String, password: String, phone: String, municipality: String) {
-        val profile = Profile("es", phone, municipality)
-        val signupData = SignupData(first_name, last_name, email, password, profile)
-        signupView?.showLoader()
-        signupView?.hideKeyboard()
-        authenticationService.signup(signupData)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        { result -> onSignup(result) },
-                        { error -> onSignupError(error) }
-                )
+    override fun doSignup(first_name: String, last_name: String, email: String, password: String, confirmPassword: String, phone: String, municipality: String) {
+        if(validPasswords(password, confirmPassword)) {
+            val profile = Profile("es", phone, municipality)
+            val signupData = SignupData(first_name, last_name, email, password, profile)
+            signupView?.showLoader()
+            signupView?.hideKeyboard()
+            authenticationService.signup(signupData)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(
+                            { result -> onSignup(result) },
+                            { error -> onSignupError(error) }
+                    )
+        } else {
+            signupView?.showError("Las contraseñas no coinciden")
+        }
+    }
+
+    override fun validPasswords(password: String, confirmPassword: String): Boolean {
+        return password == confirmPassword
     }
 
     // Destroy View when Activity destroyed

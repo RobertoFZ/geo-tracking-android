@@ -6,7 +6,8 @@ package com.twosoft.follow.app.SignupActivity
 class SignupContract {
 
     interface UserActionListener {
-        fun doSignup(first_name: String, last_name: String, email: String, password: String, phone: String, municipality: String)
+        fun doSignup(first_name: String, last_name: String, email: String, password: String, confirmPassword: String, phone: String, municipality: String)
+        fun validPasswords(password: String, confirmPassword: String): Boolean
     }
 
     interface View {

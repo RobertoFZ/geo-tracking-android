@@ -139,14 +139,24 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, MapContract.View {
 
     override fun logout() {
         val builder = AlertDialog.Builder(this)
+        builder.setTitle("¿Quieres cerrar sesión?")
+        builder.setPositiveButton("Sí") { dialog, which ->
+            doLogout()
+        }
+        builder.setNegativeButton("Cancelar") { dialog, which ->
 
+        }
+        builder.show()
+
+        /*
         with(builder)
         {
-            setTitle("¿Quieres cerrar sesión?")
+            setTitle("")
             setPositiveButton("Sí", DialogInterface.OnClickListener { dialogInterface, i -> doLogout()  })
             setNegativeButton("Cancelar", null)
             show()
         }
+         */
     }
 
     private fun doLogout() {
@@ -166,15 +176,6 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, MapContract.View {
         }
         mMap.isMyLocationEnabled = true
         mapPresenter.centerMap()
-
-        /*
-        if (!PreferencesHelper(this).follow_mode) {
-            mapPresenter.getLocations()
-            startMapUpdateTask()
-        } else {
-            startLocationService()
-        }
-        */
 
         // mapPresenter.getLocations()
         // startMapUpdateTask()

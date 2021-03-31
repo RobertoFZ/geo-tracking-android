@@ -77,8 +77,9 @@ class SignupActivity : AppCompatActivity(), SignupContract.View {
         val last_name = editTextLastName.text.toString()
         val email = editTextEmail.text.toString()
         val password = editTextPassword.text.toString()
+        val confirmPassword = editTextConfirmPassword.text.toString()
         val phone = editTextPhone.text.toString()
         val municipality = editTextMunicipality.text.toString()
-        signupPresenter.doSignup(first_name, last_name, email, password, phone, municipality)
+        signupPresenter.doSignup(first_name, last_name, email, password, confirmPassword, phone, municipality)
     }
 }

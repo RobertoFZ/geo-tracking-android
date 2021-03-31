@@ -13,6 +13,7 @@
         android:gravity="center"
         android:orientation="vertical">
 
+        <!--
         <TextView
             android:id="@+id/fullscreen_content"
             android:layout_width="match_parent"
@@ -33,17 +34,18 @@
             android:text="@string/author"
             android:textColor="#fff"
             android:textSize="30sp"/>
+            -->
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_light"
+            android:fontFamily="@font/poppins"
             android:gravity="center"
             android:keepScreenOn="true"
             android:text="@string/experience"
             android:textColor="#fff"
-            android:textSize="15sp"
+            android:textSize="25sp"
             android:layout_marginTop="40dp"/>
     </LinearLayout>
 
