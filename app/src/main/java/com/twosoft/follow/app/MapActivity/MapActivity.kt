@@ -67,11 +67,28 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, MapContract.View {
             mapPresenter.updateStatus(user_id, isChecked)
         }
         switchActive.isChecked = PreferencesHelper(this).on_route
+
+        mapPresenter.updateStatus(user_id, true);
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d("Test", "onStop")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.d("Test", "onRestart")
+        val user_id = PreferencesHelper(this).pk
+        mapPresenter.updateStatus(user_id, true);
     }
 
     override fun onDestroy() {
         // Destroy View
+        Log.d("Test", "onDestroy")
         mapPresenter.onDestroy()
+        val user_id = PreferencesHelper(this).pk
+        mapPresenter.updateStatus(user_id, false)
         super.onDestroy()
     }
 
