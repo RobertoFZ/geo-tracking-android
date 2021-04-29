@@ -9,6 +9,7 @@ import android.location.Location
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.util.Log
+import android.widget.Toast
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.location.LocationServices
@@ -116,7 +117,10 @@ class SendDataService : BroadcastReceiver(), GoogleApiClient.ConnectionCallbacks
     }
 
     private fun onSendLocationError(error: Throwable, locationData: GeoPoint) {
+        Toast.makeText(this.context!!, "Problema de conexión, no es posible enviar tu ubicación, se intentará nuevamente en unos minutos", Toast.LENGTH_LONG).show()
+
         if (error is HttpException) {
+
             val body = error.response().errorBody()
             val errorConverter = RetrofitFactory.retrofit.responseBodyConverter<ErrorResponse>(ErrorResponse::class.java, arrayOfNulls<Annotation>(0))
 
@@ -126,7 +130,6 @@ class SendDataService : BroadcastReceiver(), GoogleApiClient.ConnectionCallbacks
             } catch (e1: IOException) {
                 e1.printStackTrace()
             }
-
         }
         val geoPoints = LocationManager.getPoints()
         geoPoints.add(locationData)
